@@ -2,7 +2,6 @@ import database from "infra/database.js";
 
 async function status(request, response) {
   const updateAt = new Date().toISOString();
-  console.log(request);
 
   const dataBaseVersionResult = await database.query("SHOW server_version;");
   const dataBaseVersionValue = dataBaseVersionResult.rows[0].server_version;
