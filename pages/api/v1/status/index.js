@@ -4,11 +4,13 @@ async function status(request, response) {
   const updateAt = new Date().toISOString();
 
   const dataBaseVersionResult = await database.query("SHOW server_version;");
+
   const dataBaseVersionValue = dataBaseVersionResult.rows[0].server_version;
 
   const dataBaseMaxConnectionsValue = await database.query(
     "SHOW max_connections;",
   );
+
   const dataBaseMaxConnectionsResult =
     dataBaseMaxConnectionsValue.rows[0].max_connections;
 

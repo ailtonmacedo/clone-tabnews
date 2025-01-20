@@ -1,13 +1,20 @@
-//arrange
-// act
-//Expect = Valor dinámico -> toBe = Valor Estático
+import database from "infra/database.js";
 
-test("Teste - GET to /api/v1/migrations should return 200", async () => {
-  const response = await fetch("http://localhost:3000/api/v1/migrations");
-  expect(response.status).toBe(200);
+beforeAll(cleanDatabase);
 
-  const responseBoby = await response.json();
-  console.log(responseBoby);
+async function cleanDatabase() {
+  await database.query("drop schema public cascade; create schema public;");
+}
 
-  expect(Array.isArray(responseBoby)).toBe(true);
+describe("GET /api/v1/migrations", () => {
+  test("Retrieving pending migrations", async () => {
+    const response = await fetch("http://localhost:3000/api/v1/migrations");
+
+    expect(response.status).toBe(200);
+
+    const responseBoby = await response.json();
+
+    expect(Array.isArray(responseBoby)).toBe(true);
+    expect(responseBoby.length).toBeGreaterThan(0);
+  });
 });
