@@ -1,8 +1,18 @@
+version: "3.8"
+
 services:
   database:
     image: "postgres:16.6-alpine3.21"
+    container_name: "postgres_dev"
     env_file:
       - ../.env.development
     ports:
       # "host:container"
       - "5432:5432"
+    networks:
+      - postgres_dev
+
+networks:
+  postgres_dev:
+    driver: bridge
+    name: postgres_dev
