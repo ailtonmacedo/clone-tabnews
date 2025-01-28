@@ -1,6 +1,11 @@
 //arrange
 // act
 //Expect = Valor dinámico -> toBe = Valor Estático
+import orchestrator from "tests/orchestrator.js";
+
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
+});
 
 describe("GET /api/v1/migrations", () => {
   test("Retrieving status", async () => {
