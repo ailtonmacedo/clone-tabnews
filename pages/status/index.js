@@ -6,10 +6,10 @@ async function fetchAPI(key) {
   return responseBody;
 }
 
-function Capslock(props) {
-  const textoEmCaplock = props.texto.toUpperCase();
-  return textoEmCaplock;
-}
+// function Capslock(props) {
+//   const textoEmCaplock = props.texto.toUpperCase();
+//   return textoEmCaplock;
+// }
 
 export default function StatusPage() {
   return (
