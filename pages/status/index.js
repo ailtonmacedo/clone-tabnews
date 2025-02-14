@@ -13,10 +13,10 @@ async function fetchAPI(key) {
 
 export default function StatusPage() {
   return (
-    <>
+    <div>
       <h1>Status</h1>
       <UpdatedAt />
-    </>
+    </div>
   );
 }
 
